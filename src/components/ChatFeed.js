@@ -16,7 +16,6 @@ const ChatFeed = (props) => {
 
   const renderMessage = () => {
     const keys = Object.keys(messages)
-    console.log(keys);
     return keys.map((key, index) => {
       const message = messages[key]
       const lastMessageKey = index === 0 ? null : keys[index - 1]
@@ -26,8 +25,8 @@ const ChatFeed = (props) => {
           <div className="message-block">
             {
               isMyMessage
-                ? <MyMessage message={message} />
-                : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
+                ? (<MyMessage message={message} />)
+                : (<TheirMessage message={message} lastMessage={messages[lastMessageKey]} />)
             }
           </div>
           <div className="read-receipts" style={{
@@ -43,7 +42,7 @@ const ChatFeed = (props) => {
   // renderMessage();
   if (!chat) return 'Loading....';
   return (
-    <div div className='chat-feed' >
+    <div className='chat-feed'>
       <div className="chat-title-container">
         <div className="chat-title">{chat?.title}</div>
         <div className="chat-subtitle">
